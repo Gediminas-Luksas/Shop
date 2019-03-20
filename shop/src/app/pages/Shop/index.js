@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import shop from '../../../shop';
 import { ProductCard, ProductsContainer } from '../../components';
@@ -36,16 +37,8 @@ Shop.defaultProps = {
 const enhance = connect(
   state => ({ products: shop.selectors.getProducts(state) }),
   dispatch => ({
-    toggleFavorite: id =>
-      dispatch({
-        type: shop.types.TOGGLE_FAVORITE_PRODUCT,
-        payload: id,
-      }),
-    updateCartCount: (id, count) =>
-      dispatch({
-        type: shop.types.UPDATE_PRODUCT_CART_COUNT,
-        payload: { id, count },
-      }),
+    toggleFavorite: bindActionCreators(shop.actions.toggleFavorite, dispatch),
+    updateCartCount: bindActionCreators(shop.actions.updateCartCount, dispatch),
   })
 );
 

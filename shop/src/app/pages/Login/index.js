@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import './index.scss';
 import auth from '../../../auth';
@@ -59,7 +60,7 @@ Login.propTypes = {
 const enhance = connect(
   null,
   dispatch => ({
-    login: () => dispatch({ type: auth.types.LOGIN }),
+    login: bindActionCreators(auth.actions.login, dispatch),
   })
 );
 
