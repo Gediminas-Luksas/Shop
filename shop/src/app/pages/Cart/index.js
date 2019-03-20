@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import shop from '../../../shop';
 import { ProductsContainer } from '../../components';
 import './index.scss';
 
@@ -38,6 +39,6 @@ Cart.propTypes = {
 };
 
 const enhance = connect(state => ({
-  products: state.shop.products.filter(product => product.cartCount > 0),
+  products: shop.selectors.getCartProducts(state),
 }));
 export default enhance(Cart);

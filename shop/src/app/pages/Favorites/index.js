@@ -35,7 +35,7 @@ Favorites.defaultProps = {
 
 const enhance = connect(
   state => ({
-    products: state.shop.products.filter(product => product.isFavorite),
+    products: shop.selectors.getFavoriteProducts(state),
   }),
   dispatch => ({
     toggleFavorite: id =>

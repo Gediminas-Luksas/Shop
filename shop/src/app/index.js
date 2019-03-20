@@ -102,8 +102,8 @@ class App extends React.Component {
 
 const endhance = connect(
   state => ({
-    error: state.shop.error,
-    loading: state.shop.loading,
+    error: shop.selectors.getError(state),
+    loading: shop.selectors.isLoading(state),
     isLogged: auth.selector.isLogged(state),
   }),
   dispatch => ({
