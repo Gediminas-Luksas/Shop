@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import { PacmanLoader } from 'react-spinners';
 import {
   BrowserRouter as Router,
@@ -86,6 +87,13 @@ class App extends React.Component {
     );
   }
 }
+App.propTypes = {
+  logout: PropTypes.func.isRequired,
+  getProducts: PropTypes.string.isRequired,
+  isLoading: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+};
 
 const endhance = connect(
   state => ({
